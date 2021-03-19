@@ -20,7 +20,7 @@ include_once 'connection.php';
 // Input data
 $name = $_POST['name'];
 
-$sql = "SELECT * FROM ptelect WHERE candidate LIKE '$name%' OR candidate LIKE '%$name' OR candidate LIKE '%$name%'";
+$sql = "SELECT year, candidate, SUM(candidatevotes) AS S1 FROM ptelect WHERE candidate LIKE '$name%' OR candidate LIKE '%$name' OR candidate LIKE '%$name%' GROUP BY year";
 $result = mysqli_query($con, $sql) or die('Error ' . mysqli_error($con));
 
 echo "<table border='1'>
@@ -35,7 +35,7 @@ while ($row = mysqli_fetch_array($result))
   echo "<tr>";
   echo "<td style='padding:15px;'>" . $row['year'] . "</td>";
   echo "<td style='padding:15px;'>" . $row['candidate'] . "</td>";
-  echo "<td style='padding:15px;'>" . $row['candidatevotes'] . "</td>";
+  echo "<td style='padding:15px;'>" . $row['S1'] . "</td>";
   echo "</tr>";
 }
 echo "</table>";
