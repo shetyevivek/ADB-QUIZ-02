@@ -46,7 +46,7 @@ else
         }
         $str .= "</table><br><br>";
 
-        $handle = fopen($Memcache_file, 'w');
+        $handle = fopen($Memcache_file, 'a');
         fwrite($handle, $str);
         fclose($handle);
         echo $str;
