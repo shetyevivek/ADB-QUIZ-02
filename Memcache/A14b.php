@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Answer 14a</title>
+    <title>Answer 14b</title>
 </head>
 <body>
   <div>
@@ -18,11 +18,13 @@ $start = microtime(true);
 $con = new PDO("mysql:host=uta.cloud; dbname=vvs1620_database", "vvs1620_vivekshetye", "Shaleshwar12@");
 
 // Input data
-$year = $_POST['year'];
-$stateco = $_POST['stateco'];
+$v1 = $_POST['v1'];
+$v2 = $_POST['v2'];
+$y1 = $_POST['y1'];
+$y2 = $_POST['y2'];
 $ntimes = $_POST['ntimes'];
 
-$Memcache_file = "Memcache/index.cache.php";
+$Memcache_file = "Memcache/index2.cache.php";
 
 if (file_exists($Memcache_file) && filemtime($Memcache_file) > time() - 30)
 {
@@ -38,15 +40,15 @@ else
 
     for ($i = 0; $i < $ntimes; $i++)
     {
-        $sql = "SELECT * FROM ptelect WHERE year=$year AND state_po='$stateco'";
+        $sql = "SELECT * FROM ptelect WHERE candidatevotes BETWEEN $v1 AND $v2 AND year BETWEEN $y1 AND $y2";
         $stmt = $con->prepare($sql);
         $stmt->execute();
         $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $str = "<table border='1'>";
-        $str .= "<tr><th>Candidate Name</th><th>Party</th><th>No. of Votes</th><th>State</th></tr>";
+        $str .= "<tr><th>State</th><th>Candidate Name</th><th>Party</th><th>No. of Votes</th><th>State</th></tr>";
         foreach ($arr as $list)
         {
-            $str .= "<tr><td>" . $list['candidate'] . "</td><td>" . $list['party_detailed'] . "</td><td>" . $list['candidatevotes'] . "</td><td>" . $list['state'] . "</td></tr>";
+            $str .= "<tr><td>" . $list['state'] . "</td><td>" . $list['candidate'] . "</td><td>" . $list['party_detailed'] . "</td><td>" . $list['candidatevotes'] . "</td><td>" . $list['state'] . "</td></tr>";
         }
         $str .= "</table><br><br>";
 
