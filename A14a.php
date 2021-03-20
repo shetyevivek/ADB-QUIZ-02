@@ -43,12 +43,12 @@ else
         $stmt->execute();
         $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $str = "<table border='1'>";
-        $str .= "<tr><th>Candidate Name</th><th>Party</th><th>No. of Votes</th><th>State</th></tr>";
+        $str .= "<tr><th style='padding:15px;'>Candidate Name</th><th style='padding:15px;'>Party</th><th style='padding:15px;'>No. of Votes</th><th>State</th></tr>";
         foreach ($arr as $list)
         {
-            $str .= "<tr><td>" . $list['candidate'] . "</td><td>" . $list['party_detailed'] . "</td><td>" . $list['candidatevotes'] . "</td><td>" . $list['state'] . "</td></tr>";
+            $str .= "<tr><td style='padding:15px;'>" . $list['candidate'] . "</td><td style='padding:15px;'>" . $list['party_detailed'] . "</td><td style='padding:15px;'>" . $list['candidatevotes'] . "</td><td style='padding:15px;'>" . $list['state'] . "</td></tr>";
         }
-        $str .= "</table><br><br>";
+        $str .= "</table><br><br><br>";
 
         $handle = fopen($Memcache_file, 'a');
         fwrite($handle, $str);
