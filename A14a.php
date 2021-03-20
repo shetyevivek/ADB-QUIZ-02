@@ -42,9 +42,9 @@ else
         {
             $str .= "<tr><td>" . $list['candidate'] . "</td><td>" . $list['party_detailed'] . "</td><td>" . $list['candidatevotes'] . "</td><td>" . $list['state'] . "</td></tr>";
         }
-        $str .= "</table><br><br>";
+        $str .= "</table>";
 
-        $handle = fopen($Memcache_file, 'a');
+        $handle = fopen($Memcache_file, 'w');
         fwrite($handle, $str);
         fclose($handle);
         echo "Cache Created<br/>";
