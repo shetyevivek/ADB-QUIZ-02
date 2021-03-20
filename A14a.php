@@ -25,12 +25,12 @@ $Memcache_file = "Memcache/index.cache.php";
 
 if (file_exists($Memcache_file) && filemtime($Memcache_file) > time() - 30)
 {
-    echo "<b>From Cache:</b><br><br>";
+    echo "<b><From Cache:</b><br><br>";
     include ($Memcache_file);
 }
 else
 {
-    echo "Cache Created<br/>";
+    echo "<b>Cache Created:</b><br><br/>";
 
     for ($i = 0; $i < $ntimes; $i++)
     {
