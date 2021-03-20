@@ -32,6 +32,9 @@ else
 {
     echo "<b>Cache Created:</b><br><br/>";
 
+    $file_handle = fopen($Memcache_file, 'w');
+    fclose($file_handle);
+
     for ($i = 0; $i < $ntimes; $i++)
     {
         $sql = "SELECT * FROM ptelect WHERE year=$year AND state_po='$stateco'";
