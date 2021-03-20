@@ -30,7 +30,7 @@ if (file_exists($Memcache_file) && filemtime($Memcache_file) > time() - 30)
 }
 else
 {
-    for ($i = 0;$x < $ntimes; $i++)
+    for ($i = 0; $i < $ntimes; $i++)
     {
         $sql = "SELECT * FROM ptelect WHERE year=$year AND state_po='$stateco'";
         $stmt = $con->prepare($sql);
@@ -42,7 +42,7 @@ else
         {
             $str .= "<tr><td>" . $list['candidate'] . "</td><td>" . $list['party_detailed'] . "</td><td>" . $list['candidatevotes'] . "</td><td>" . $list['state'] . "</td></tr>";
         }
-        $str .= "</table>";
+        $str .= "</table><br><br>";
 
         $handle = fopen($Memcache_file, 'w');
         fwrite($handle, $str);
