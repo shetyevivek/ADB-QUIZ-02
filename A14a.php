@@ -25,7 +25,7 @@ $Memcache_file = "Memcache/index.cache.php";
 
 if (file_exists($Memcache_file) && filemtime($Memcache_file) > time() - 30)
 {
-    echo "<b><From Cache:</b><br><br>";
+    echo "<From Cache:<br><br>";
     include ($Memcache_file);
 }
 else
