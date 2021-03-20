@@ -1,1 +1,0 @@
-# ADB-QUIZ-02 MemCache
