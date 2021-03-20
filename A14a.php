@@ -30,6 +30,8 @@ if (file_exists($Memcache_file) && filemtime($Memcache_file) > time() - 30)
 }
 else
 {
+    echo "Cache Created<br/>";
+
     for ($i = 0; $i < $ntimes; $i++)
     {
         $sql = "SELECT * FROM ptelect WHERE year=$year AND state_po='$stateco'";
@@ -44,10 +46,9 @@ else
         }
         $str .= "</table><br><br>";
 
-        $handle = fopen($Memcache_file, 'w');
+        $handle = fopen($Memcache_file, 'a');
         fwrite($handle, $str);
         fclose($handle);
-        echo "Cache Created<br/>";
         echo $str;
     }
 }
