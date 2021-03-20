@@ -17,8 +17,8 @@ $start = microtime(true);
 
 $con = new PDO("mysql:host=uta.cloud; dbname=vvs1620_database", "vvs1620_vivekshetye", "Shaleshwar12@");
 
-$years = $_POST['years'];
-$statec = $_POST['statec'];
+$year = $_POST['year'];
+$stateco = $_POST['stateco'];
 $ntimes = $_POST['ntimes'];
 
 $Memcache_file = "Memcache/index.cache.php";
